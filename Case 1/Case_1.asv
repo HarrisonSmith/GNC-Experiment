@@ -1,0 +1,25 @@
+clc; clear all; close all; 
+%% OPEN TABLES 
+data_table_acc   = readtable('Accelerometer_1_1.csv');
+date_table_gyro  = readtable('Gyr
+
+
+
+g = 9.81;
+%% Accelerometers
+
+acc_x   = data_table_acc{:,2};
+acc_y   = data_table_acc{:,3}; 
+acc_z   = data_table_acc{:,4};
+
+mu_acc_x	= mean(acc_x)
+sig2_acc_x	= var(acc_x)
+
+mu_acc_y	=  mean(acc_y)
+sig2_acc_y	= var(acc_y)
+
+mu_acc_z	= mean(acc_z)
+sig2_acc_z	= var(acc_z)
+
+bias_acc	= [0; 0; g] - [mu_acc_x; mu_acc_y; mu_acc_z]		% m/s/s
+var_acc		= diag([sig2_acc_x sig2_acc_y sig2_acc_z]);
