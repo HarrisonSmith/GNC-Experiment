@@ -1,12 +1,17 @@
 clear variables; close all; clc
 
-data_table_acc = readtable('data_exp3_202007100900.xls', 'Sheet', 1);
-data_table_gyro = readtable('data_exp3_202007100900.xls', 'Sheet', 2);
-data_table_mag = readtable('data_exp3_202007100900.xls', 'Sheet', 3);
+data_table_acc = readtable('Accelerometer_pitch_roll_head.csv');
+%data_table_gyro = readtable('data_exp3_202007100900.xls', 'Sheet', 2);
+data_table_mag = readtable('Magnetometer_pitch_roll_head.csv');
 
-clc
+%% Biases
+bias_mag = [-12.11214937;
+            -19.67616054;
+            22.73696197];
+bias_acc = [1.948244375;
+            1.926002907;
+            -3.760826138];
 
-load sensor_calibration.mat bias_acc bias_mag
 
 %% Local gravitational acceleration
 g = 9.80333; % m/s/s
@@ -17,9 +22,9 @@ acc_y = data_table_acc{:, 3};
 acc_z = data_table_acc{:, 4};
 
 %% Rate gyros
-gyro_x = data_table_gyro{:, 2};
-gyro_y = data_table_gyro{:, 3};
-gyro_z = data_table_gyro{:, 4};
+%gyro_x = data_table_gyro{:, 2};
+%gyro_y = data_table_gyro{:, 3};
+%gyro_z = data_table_gyro{:, 4};
 
 %% Magnetometers
 mag_xb = data_table_mag{:, 2};
