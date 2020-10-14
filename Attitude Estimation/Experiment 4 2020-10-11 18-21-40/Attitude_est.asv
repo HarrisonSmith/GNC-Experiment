@@ -160,6 +160,8 @@ gyro_x_wo_bias = Gyro_x - bias_gyro(1);
 gyro_y_wo_bias = Gyro_y - bias_gyro(2);
 gyro_z_wo_bias = Gyro_z - bias_gyro(3);
 
-Omega_x = movmean(gyro_x_wo_bias,)
-Omega_y = movmean(gyro_y_wo_bias,596);
-Omega_z = movmean(gyro_z_wo_bias,596);
+Omega_x = mean(movmean(gyro_x_wo_bias,596));
+Omega_y = mean(movmean(gyro_y_wo_bias,596));
+Omega_z = mean(movmean(gyro_z_wo_bias,596));
+
+Omega_double_bar_b = [Omega_x; Omega_y;Omega_z};
