@@ -1,3 +1,5 @@
+%% PROBLEM 1
+%% 
 clc; clear all; close all; 
 %% OPEN TABLES 
 data_table_acc_1_1   = readtable('Accelerometer_1_1.csv');
@@ -147,7 +149,7 @@ xlswrite('Data.xls',[mu_acc_1_2 tru_acc_1 bias_acc_1_2 var_acc_1_2],'sheet1','E7
 xlswrite('Data.xls',[mu_gyro_1_2 tru_gyro_1 bias_gyro_1_2 var_gyro_1_2],'sheet2','E7');
 xlswrite('Data.xls',[mu_mag_1_2 tru_mag_1 bias_mag_1_2 var_mag_1_2],'sheet3','E7');
 
-%% OPEN TABLES 
+%% OPEN TABLES
 data_table_acc_1_3   = readtable('Accelerometer_1_3.csv');
 data_table_gyro_1_3  = readtable('Gyroscope_1_3.csv');
 data_table_mag_1_3   = readtable('Magnetometer_1_3.csv');
@@ -739,6 +741,7 @@ xlswrite('Data.xls',[mu_acc_2_5 tru_acc_2 bias_acc_2_5 var_acc_2_5],'sheet1','E3
 xlswrite('Data.xls',[mu_gyro_2_5 tru_gyro_2 bias_gyro_2_5 var_gyro_2_5],'sheet2','E31');
 xlswrite('Data.xls',[mu_mag_2_5 tru_mag_2 bias_mag_2_5 var_mag_2_5],'sheet3','E31');
 
+clc
 %% OPEN TABLES 
 data_table_acc_3_1   = readtable('Accelerometer_3_1.csv');
 data_table_gyro_3_1  = readtable('Gyroscope_3_1.csv');
@@ -1849,3 +1852,62 @@ var_mag_5_5		= diag([sig2_mag_x_5_5 sig2_mag_y_5_5 sig2_mag_z_5_5]);
 xlswrite('Data.xls',[mu_acc_5_5 tru_acc_5 bias_acc_5_5 var_acc_5_5],'sheet1','E76');
 xlswrite('Data.xls',[mu_gyro_5_5 tru_gyro_5 bias_gyro_5_5 var_gyro_5_5],'sheet2','E76');
 xlswrite('Data.xls',[mu_mag_5_5 tru_mag_5 bias_mag_5_5 var_mag_5_5],'sheet3','E76');
+clc
+
+%% PLOTS
+figure(1)
+sgtitle('Case 1 Set 2 Accelerometer')
+
+subplot(311)
+plot(data_table_acc_1_2{:,1},acc_x_1_2,'Linewidth',2)
+xlabel('time(s)');ylabel('Accel (m/s/s)'); title('X-Accel')
+hold on 
+
+subplot(312)
+plot(data_table_acc_1_2{:,1},acc_y_1_2,'Linewidth',2)
+xlabel('time(s)');ylabel('Accel (m/s/s)'); title('Y-Accel')
+hold on 
+
+subplot(313)
+plot(data_table_acc_1_2{:,1},acc_z_1_2,'Linewidth',2)
+xlabel('time(s)');ylabel('Accel (m/s/s)'); title('Z-Accel')
+hold off
+
+figure(2)
+sgtitle('Case 1 Set 3 Gyroscope')
+
+subplot(311)
+plot(data_table_gyro_1_3{:,1},gyro_x_1_3,'Linewidth',2)
+xlabel('time(s)');ylabel('rad/s'); title('X-Axis')
+hold on 
+
+subplot(312)
+plot(data_table_gyro_1_3{:,1},gyro_y_1_3,'Linewidth',2)
+xlabel('time(s)');ylabel('rad/s'); title('Y-Axis')
+hold on 
+
+subplot(313)
+plot(data_table_gyro_1_3{:,1},gyro_z_1_3,'Linewidth',2)
+xlabel('time(s)');ylabel('rad/s'); title('Z-Axis')
+hold off
+
+figure(3)
+sgtitle('Case 1 Set 3 Magnetometer')
+
+subplot(311)
+plot(data_table_mag_1_3{:,1},mag_x_1_3,'Linewidth',2)
+xlabel('time(s)');ylabel('micro Teslas'); title('X-Axis')
+hold on 
+
+subplot(312)
+plot(data_table_mag_1_3{:,1},mag_y_1_3,'Linewidth',2)
+xlabel('time(s)');ylabel('micro Teslas'); title('Y-Axis')
+hold on 
+
+subplot(313)
+plot(data_table_mag_1_3{:,1},mag_z_1_3,'Linewidth',2)
+xlabel('time(s)');ylabel('micro Teslas'); title('Z-Axis')
+hold off
+
+
+

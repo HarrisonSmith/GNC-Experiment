@@ -1,7 +1,8 @@
+%% PROBLEM 3
+%% 
 clear variables; close all; clc
 
 data_table_acc = readtable('Accelerometer_pitch_roll_head.csv');
-%data_table_gyro = readtable('data_exp3_202007100900.xls', 'Sheet', 2);
 data_table_mag = readtable('Magnetometer_pitch_roll_head.csv');
 
 %% Biases
@@ -21,10 +22,6 @@ acc_x = data_table_acc{:, 2};
 acc_y = data_table_acc{:, 3};
 acc_z = data_table_acc{:, 4};
 
-%% Rate gyros
-%gyro_x = data_table_gyro{:, 2};
-%gyro_y = data_table_gyro{:, 3};
-%gyro_z = data_table_gyro{:, 4};
 
 %% Magnetometers
 mag_xb = data_table_mag{:, 2};
@@ -47,12 +44,15 @@ mag_zb_wo_bias = mag_zb - bias_mag(3);
 roll_data	= atan( acc_y_wo_bias ./ acc_z_wo_bias );
 pitch_data	= asin( acc_x_wo_bias / g );
 
-roll_mu		= mean( roll_data );
-pitch_mu	= mean( pitch_data );
+roll_mu		= mean( roll_data ) 
+disp('rad')
+pitch_mu	= mean( pitch_data )
+disp('rad')
 
-roll_var	= var(roll_data);
-pitch_var	= var(pitch_data);
-
+roll_var	= var(roll_data)
+disp('rad')
+pitch_var	= var(pitch_data)
+disp('rad')
 
 fprintf('The roll angle is %f deg +/- %f deg\n', ...
 	roll_mu*180/pi, 3*sqrt(roll_var)*180/pi);
@@ -80,9 +80,14 @@ declination				= -14.07*pi/180;
 % https://www.ngdc.noaa.gov/geomag/calculators/magcalc.shtml#declination
 
 true_heading_data	= declination + magnetic_heading_data;
-true_heading_mu		= mean(true_heading_data);
-true_heading_var	= var(true_heading_data);
+true_heading_mu		= mean(true_heading_data)
+disp('rad')
+true_heading_var	= var(true_heading_data)
+disp('rad')
 
 fprintf('The heading is %f deg +/- %f deg\n', ...
 	true_heading_mu*180/pi, 3*sqrt(true_heading_var)*180/pi);
 
+disp('This is a valid result as the device orientation matched the calculated values')
+
+ 

@@ -1,4 +1,4 @@
-clc; clear all; close all; 
+lc; clear all; close all; 
 %% Fetch Data
 
 data_table_acc     = readtable('Accelerometer_Att_est.csv');
